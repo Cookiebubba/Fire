@@ -384,6 +384,8 @@ The lineup doubles as **class archetypes** — all must obey the same palette (�
 ---
 
 ## 13. Development Roadmap (areas needing design)
+> **Now in production planning:** milestones, gates, and risk ordering live in [`BUILD_SCHEDULE.md`](BUILD_SCHEDULE.md); the live task board with agent-ready briefs is [`KANBAN.md`](KANBAN.md). The list below is the original design-area summary.
+
 - **Gameplay mechanics** — tune water pressure/propulsion, heat & spread rates, oxygen economy, revival cost.
 - **Character design** — model + rig the approved Tank (budgets §9.6, rig §9.7) incl. masked variant; concept the other classes via T1.
 - **Environment design** — modular low-poly building kit (spigots, fire doors, ledges, ladders) via T3, on the 0.5 m grid.
@@ -402,4 +404,5 @@ The lineup doubles as **class archetypes** — all must obey the same palette (�
 ## Changelog
 - **Session start** — Tracker scaffold created.
 - **Ideation session** — Full concept locked: core loop, water/hose system, heat/smoke/oxygen, civilian rescue objective, co-op stakes, firehouse hub, rotation + leaderboards, alpha skyscraper, visual design language + polycounts, hero shots, locked "Stout Tank" hero + class directions, judging verdict, dev roadmap.
+- **2026-06-11 (later)** — Production kickoff: added `BUILD_SCHEDULE.md` (risk-ordered milestones M0–M6 with kill/pivot gates, agent process rules, risk register) and `KANBAN.md` (live board; M0–M3 fully carded with agent-ready briefs, M4–M6 as epics). First Ready cards: ENG-001 (engine decision), DES-001 (systems specs + tuning tables), PROD-001 (process bootstrap).
 - **2026-06-11** — Hero turnaround sheet approved and adopted as style anchor. Art section rebuilt into production specs: canonical hex palette sampled from the sheet, shading/material/VFX rules, scale & proportion table, revised poly budgets (hero raised to 1,200–2,500 tris to match approved detail), rig + animation state list, pipeline/naming conventions. Hero-shot one-liners expanded into a full prompt library: master style block, negative prompt, on-model hero block, six production-ready hero-shot prompts, five asset-sheet templates, consistency workflow. Added technical targets to §3.

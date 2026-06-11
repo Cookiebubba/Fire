@@ -1,0 +1,174 @@
+/* FIRE — cozy storybook UI, palette from GameConceptTracker §9.2 */
+:root {
+  --brick: #c14b33;
+  --brass: #d9a53c;
+  --flame: #e06b35;
+  --tan: #c8a165;
+  --hivis: #e8c95c;
+  --silver: #bfbcad;
+  --charcoal: #3b3833;
+  --steel: #a9adb0;
+  --skin: #f2e3ce;
+  --paper: #ede8dc;
+  --slate: #7e8a96;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { width: 100%; height: 100%; overflow: hidden; background: var(--paper); }
+
+body {
+  font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  color: var(--charcoal);
+  user-select: none;
+}
+
+#game { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+
+.hidden { display: none !important; }
+
+/* ---------- overlay ---------- */
+.overlay {
+  position: fixed; inset: 0; z-index: 20;
+  display: flex; align-items: center; justify-content: center;
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  backdrop-filter: blur(3px);
+}
+
+.panel {
+  background: var(--paper);
+  border: 3px solid var(--charcoal);
+  border-radius: 18px;
+  box-shadow: 0 14px 0 -6px rgba(59, 56, 51, 0.25);
+  padding: 28px 36px;
+  max-width: 460px;
+  width: calc(100% - 32px);
+  text-align: center;
+}
+
+.panel h1 {
+  font-size: 52px; letter-spacing: 0.18em; color: var(--brick);
+  text-shadow: 0 3px 0 rgba(59, 56, 51, 0.18);
+}
+.panel h1 .sub {
+  display: block; font-size: 14px; letter-spacing: 0.32em;
+  color: var(--slate); font-weight: normal;
+}
+.tagline { margin: 6px 0 18px; color: var(--charcoal); font-style: italic; opacity: 0.75; }
+
+button {
+  font: inherit; font-weight: bold; letter-spacing: 0.04em;
+  color: var(--paper); background: var(--brick);
+  border: 2px solid var(--charcoal); border-radius: 10px;
+  padding: 8px 18px; cursor: pointer;
+  box-shadow: 0 4px 0 0 var(--charcoal);
+  transition: transform 0.06s, box-shadow 0.06s;
+}
+button:hover { transform: translateY(1px); box-shadow: 0 3px 0 0 var(--charcoal); }
+button:active { transform: translateY(4px); box-shadow: 0 0 0 0 var(--charcoal); }
+button.big { font-size: 22px; padding: 12px 30px; margin: 4px 0 16px; }
+button:disabled { opacity: 0.5; cursor: default; }
+
+.coop {
+  border-top: 2px dashed var(--silver); margin-top: 4px; padding-top: 14px;
+}
+.coop h2 { font-size: 15px; letter-spacing: 0.22em; color: var(--slate); margin-bottom: 10px; }
+.coop-row { display: flex; gap: 10px; justify-content: center; align-items: center; margin-bottom: 10px; }
+.coop-row button { background: var(--slate); font-size: 14px; }
+
+.code {
+  font-family: ui-monospace, monospace; font-size: 26px; font-weight: bold;
+  letter-spacing: 0.3em; color: var(--brick);
+  background: #fff; border: 2px solid var(--charcoal); border-radius: 8px;
+  padding: 4px 10px;
+}
+
+#join-code {
+  font-family: ui-monospace, monospace; font-size: 20px; font-weight: bold;
+  letter-spacing: 0.3em; text-transform: uppercase; text-align: center;
+  width: 130px; padding: 6px 8px;
+  border: 2px solid var(--charcoal); border-radius: 8px;
+  background: #fff; color: var(--charcoal);
+}
+
+.net-status { min-height: 18px; font-size: 13px; color: var(--slate); }
+.net-status.err { color: var(--brick); }
+.net-status.ok { color: #5a7a4a; }
+
+.help { border-top: 2px dashed var(--silver); margin-top: 12px; padding-top: 12px; }
+.help table { margin: 0 auto; font-size: 12.5px; border-spacing: 10px 3px; }
+.help td:nth-child(odd) {
+  font-weight: bold; color: var(--paper); background: var(--charcoal);
+  border-radius: 5px; padding: 1px 8px; text-align: center;
+}
+.help td:nth-child(even) { text-align: left; opacity: 0.85; }
+.tip { margin-top: 8px; font-size: 12px; color: var(--slate); }
+.tip b { color: var(--flame); }
+
+/* ---------- HUD ---------- */
+.hud { position: fixed; inset: 0; z-index: 10; pointer-events: none; }
+
+.reticle {
+  position: absolute; left: 50%; top: 50%; width: 6px; height: 6px;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(237, 232, 220, 0.9); border-radius: 50%;
+  box-shadow: 0 0 0 1.5px rgba(59, 56, 51, 0.45);
+  transition: width 0.12s, height 0.12s;
+}
+.reticle.spraying { width: 14px; height: 14px; border-color: var(--hivis); }
+
+.prompt {
+  position: absolute; left: 50%; bottom: 26%; transform: translateX(-50%);
+  background: var(--paper); border: 2px solid var(--charcoal); border-radius: 10px;
+  box-shadow: 0 4px 0 -1px rgba(59, 56, 51, 0.3);
+  padding: 7px 16px; font-size: 15px; font-weight: bold; white-space: nowrap;
+}
+.prompt .key {
+  display: inline-block; background: var(--charcoal); color: var(--paper);
+  border-radius: 5px; padding: 0 8px; margin-right: 8px;
+}
+
+.gauge-wrap {
+  position: absolute; left: 22px; bottom: 20px; width: 220px;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  border: 2px solid var(--charcoal); border-radius: 12px;
+  padding: 10px 14px;
+}
+.gauge { margin-bottom: 7px; }
+.gauge-label { font-size: 10px; font-weight: bold; letter-spacing: 0.22em; color: var(--slate); margin-bottom: 2px; }
+.bar {
+  height: 12px; background: rgba(59, 56, 51, 0.15);
+  border: 1.5px solid var(--charcoal); border-radius: 6px; overflow: hidden;
+}
+.fill { height: 100%; width: 0%; border-radius: 4px; transition: width 0.08s linear; }
+.fill.pressure { background: linear-gradient(90deg, var(--hivis), var(--flame)); }
+.fill.water { background: linear-gradient(90deg, #7eb3c9, #4d8aa8); }
+.hose-info { font-size: 11px; color: var(--slate); min-height: 13px; }
+
+.nozzle-wrap {
+  position: absolute; right: 22px; bottom: 20px; display: flex; gap: 6px;
+}
+.mode {
+  font-size: 11px; font-weight: bold; letter-spacing: 0.14em;
+  color: var(--slate); background: color-mix(in srgb, var(--paper) 88%, transparent);
+  border: 2px solid var(--silver); border-radius: 8px; padding: 6px 10px;
+}
+.mode.active { color: var(--paper); background: var(--brick); border-color: var(--charcoal); }
+
+.net-hud {
+  position: absolute; right: 22px; top: 18px; text-align: right;
+  font-size: 12.5px; font-weight: bold; color: var(--charcoal);
+}
+.net-hud .pill {
+  display: inline-block; background: color-mix(in srgb, var(--paper) 88%, transparent);
+  border: 2px solid var(--charcoal); border-radius: 9px; padding: 4px 12px; margin-bottom: 5px;
+}
+.net-hud .code-mini { color: var(--brick); font-family: ui-monospace, monospace; letter-spacing: 0.18em; }
+
+.toast {
+  position: absolute; left: 50%; top: 14%; transform: translateX(-50%);
+  background: var(--charcoal); color: var(--paper);
+  border-radius: 10px; padding: 8px 20px; font-size: 14px; font-weight: bold;
+  opacity: 0; transition: opacity 0.25s;
+}
+.toast.show { opacity: 0.92; }

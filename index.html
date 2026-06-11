@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FIRE — Training Yard</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <canvas id="game"></canvas>
+
+    <!-- Start / pause overlay -->
+    <div id="overlay" class="overlay">
+      <div class="panel">
+        <h1>FIRE<span class="sub">training yard</span></h1>
+        <p class="tagline">Climb. Contain. Everyone comes home.</p>
+
+        <div class="menu-buttons">
+          <button id="btn-play" class="big">▶ &nbsp;Enter the Yard</button>
+        </div>
+
+        <div class="coop">
+          <h2>Co-op (P2P)</h2>
+          <div class="coop-row">
+            <button id="btn-host">Host — get invite code</button>
+            <span id="host-code" class="code hidden"></span>
+          </div>
+          <div class="coop-row">
+            <input id="join-code" maxlength="6" placeholder="CODE" autocomplete="off" spellcheck="false" />
+            <button id="btn-join">Join</button>
+          </div>
+          <div id="net-status" class="net-status"></div>
+        </div>
+
+        <div class="help">
+          <table>
+            <tr><td>WASD</td><td>move</td><td>Mouse</td><td>look</td></tr>
+            <tr><td>Space</td><td>jump</td><td>Shift</td><td>sprint</td></tr>
+            <tr><td>C</td><td>crouch / crawl</td><td>V</td><td>1st ⇄ 3rd person</td></tr>
+            <tr><td>H</td><td>deploy / holster hose</td><td>E</td><td>connect / disconnect</td></tr>
+            <tr><td>LMB</td><td>spray</td><td>1·2·3 / wheel</td><td>mist · stream · blast</td></tr>
+            <tr><td>G</td><td>add hose segment</td><td>M</td><td>mute</td></tr>
+          </table>
+          <p class="tip">Tip: aim <b>blast</b> straight down mid-air to water-jump.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- HUD -->
+    <div id="hud" class="hud hidden">
+      <div id="reticle" class="reticle"></div>
+      <div id="prompt" class="prompt hidden"></div>
+
+      <div class="gauge-wrap">
+        <div class="gauge">
+          <div class="gauge-label">PRESSURE</div>
+          <div class="bar"><div id="pressure-fill" class="fill pressure"></div></div>
+        </div>
+        <div class="gauge">
+          <div class="gauge-label">WATER</div>
+          <div class="bar"><div id="water-fill" class="fill water"></div></div>
+        </div>
+        <div id="hose-info" class="hose-info"></div>
+      </div>
+
+      <div class="nozzle-wrap">
+        <div id="mode-mist" class="mode">MIST</div>
+        <div id="mode-stream" class="mode active">STREAM</div>
+        <div id="mode-blast" class="mode">BLAST</div>
+      </div>
+
+      <div id="net-hud" class="net-hud"></div>
+      <div id="toast" class="toast hidden"></div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

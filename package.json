@@ -1,0 +1,21 @@
+{
+  "name": "fire-sandbox",
+  "private": true,
+  "version": "0.1.0",
+  "description": "FIRE — co-op firefighting platformer. Playable systems sandbox: character, hose, water sources, P2P co-op.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "peerjs": "^1.5.4",
+    "three": "^0.165.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.165.0",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.0"
+  }
+}

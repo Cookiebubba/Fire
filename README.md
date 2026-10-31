@@ -1,5 +1,7 @@
 # 🚒 FIRE — Training Yard (playable systems sandbox)
 
+<a href="https://buymeacoffee.com/brandynships"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" height="41"></a>
+
 The first playable slice of the co-op firefighting platformer described in
 [`GameConceptTracker.md`](./GameConceptTracker.md). Everything here is built
 from code — the Stout Tank hero, his animations, the hose physics, the water,
